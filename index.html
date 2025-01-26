@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        /* General Styling */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('img1.jfif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+        }
+
+        #myForm {
+            text-align: center;
+            border: 5px ridge black;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            width: 300px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h3 {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <form id="myForm">
+        <h3>Login</h3>
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Enter Username">
+            <p class="error" id="nameError"></p>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter Password">
+            <p class="error" id="passwordError"></p>
+        </div>
+        <button type="button" class="button" onclick="submitForm()">Submit</button>
+        <button type="button" onclick="resetForm()">Reset</button>
+		<p>Web Programming Activity 1</p>
+<p>Faculty Name-  Dr. Manivasagam</p>
+
+		<p>Name- Siddharth Godhani</p>
+		<p>USN-  22BCAR0013</p>
+    </form>
+
+    <script>
+        // Function to reset the form
+        function resetForm() {
+            document.getElementById("myForm").reset();
+            document.getElementById("nameError").innerText = "";
+            document.getElementById("passwordError").innerText = "";
+        }
+
+        // Form validation and submission
+        function submitForm() {
+            const name = document.getElementById("name").value.trim();
+            const password = document.getElementById("password").value.trim();
+            let isValid = true;
+
+            // Clear previous errors
+            document.getElementById("nameError").innerText = "";
+            document.getElementById("passwordError").innerText = "";
+
+            // Validate Name
+            if (!name) {
+                document.getElementById("nameError").innerText = "Name is required.";
+                isValid = false;
+            }
+
+            // Validate Password
+            const passwordPattern = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{6,}$/;
+
+            if (!password) {
+                document.getElementById("passwordError").innerText = "Password is required.";
+                isValid = false;
+            } else if (!passwordPattern.test(password)) {
+                document.getElementById("passwordError").innerText = 
+                    "Password must have at least 6 characters, one letter, one number, and one symbol.";
+                isValid = false;
+            }
+
+            // Navigate to Forms page if validation passes
+            if (isValid) {
+                window.location.href = "Forms.html";
+            }
+        }
+    </script>
+</body>
+</html>

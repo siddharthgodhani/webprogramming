@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form_siddharth</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- Font Awesome Icons -->
+    <style>
+        body {
+            background-image: url('img1.jfif');
+	    background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+        .form-container {
+            width: 100%;
+            max-width: 500px;
+            margin: auto;
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-top: 100px;
+            background-image: url('https://images.unsplash.com/photo-1506748686213-43a4eb2ba27f?crop=entropy&cs=tinysrgb&fit=max&ixid=MXwyMDg0M3wxfGFsbHwxfHx8fHx8fHx8fHwxNjg2MjY2Mzc5&ixlib=rb-1.2.1&q=80&w=1080');
+            background-size: cover;
+            background-position: center;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 16px;
+            margin-bottom: 5px;
+            display: block;
+            color: #555;
+        }
+        input[type="text"], input[type="email"], input[type="date"], input[type="tel"], textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border 0.3s;
+        }
+        input[type="text"]:focus, input[type="email"]:focus, input[type="date"]:focus, input[type="tel"]:focus, textarea:focus {
+            border-color: #007bff;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #000000;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        button i {
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #000000;
+        }
+        .back-btn {
+            background-color: #000000;
+        }
+        .reset-btn {
+            background-color: #000000;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Form For User's Information</h2>
+        <form id="userForm" onsubmit="return submitForm()">
+            <label for="fullName">Enter Your Full Name:</label>
+            <input type="text" id="fullName" name="fullName" required>
+
+            <label for="email">Enter Your Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="dob">Enter Your Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+	 
+	<label for="address">Enter Your Address:</label>
+            <textarea id="address" name="address" rows="4" required></textarea>
+
+            <label for="phone">Enter Your Phone Number:</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+
+            
+
+            <button type="submit"><i></i>Submit</button>
+            <button type="button" class="reset-btn" onclick="resetForm()">Reset</button>
+        </form>
+
+        <button class="back-btn" onclick="goBack()"><i></i>Back to Login</button>
+    </div>
+
+    <script>
+        // Function to handle form submission and save data to localStorage
+        function submitForm() {
+            const fullName = document.getElementById("fullName").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const dob = document.getElementById("dob").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const address = document.getElementById("address").value.trim();
+
+            // Save data to localStorage
+            localStorage.setItem("fullName", fullName);
+            localStorage.setItem("email", email);
+            localStorage.setItem("dob", dob);
+            localStorage.setItem("phone", phone);
+            localStorage.setItem("address", address);
+
+            // Redirect to the final page
+            window.location.href = "FinalPage.html";
+
+            // Prevent default form submission
+            return false;
+        }
+
+        // Function to reset form fields
+        function resetForm() {
+            document.getElementById("userForm").reset();
+        }
+
+        // Function to navigate back to the login page
+        function goBack() {
+            window.location.href = "index.html";  // Change this to your login page URL
+        }
+    </script>
+</body>
+</html>
